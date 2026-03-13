@@ -101,7 +101,7 @@ const Sprites = {
       ];
     }
 
-    const pxSize = big ? 2 : 2;
+    const pxSize = 2;
     const w = grid[0].length * pxSize;
     const h = grid.length * pxSize;
     const { canvas, ctx } = this.createCanvas(w, h);
@@ -121,14 +121,10 @@ const Sprites = {
 
     // Simple walk animation: shift legs
     if (frame === 1) {
-      // Mirror horizontally for alternate frame feel
+      // Redraw base then modify bottom pixels for leg movement
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.save();
-      ctx.scale(1, 1);
       ctx.drawImage(base, 0, 0);
-      // Modify bottom pixels slightly for leg movement
       const h = canvas.height;
-      ctx.fillStyle = this.P.H;
       if (!big) {
         ctx.clearRect(0, h - 6, canvas.width, 6);
         ctx.fillStyle = this.P.H;
@@ -146,7 +142,6 @@ const Sprites = {
         ctx.fillRect(4, h - 10, 6, 6);
         ctx.fillRect(14, h - 10, 6, 4);
       }
-      ctx.restore();
     }
 
     this.cache[key] = canvas;
@@ -301,7 +296,6 @@ const Sprites = {
     // Spinning coin animation: change width for rotation effect
     const widths = [12, 8, 4, 8];
     const w = widths[frame % 4];
-    const offset = (16 - w) / 2;
 
     ctx.fillStyle = '#FFD54F';
     ctx.beginPath();
