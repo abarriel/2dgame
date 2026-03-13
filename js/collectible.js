@@ -39,7 +39,7 @@ class PowerUp {
     this.width = TILE;
     this.height = TILE;
     this.type = type; // 'mushroom' or 'star'
-    this.vx = type === 'star' ? 0 : 60; // mushroom slides, star stays
+    this.vx = 60; // both mushroom and star slide horizontally
     this.vy = 0;
     this.active = true;
     this.grounded = false;

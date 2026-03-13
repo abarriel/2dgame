@@ -25,7 +25,6 @@ const Game = {
   player: null,
   camera: null,
   enemies: [],
-  coins: [],
   powerUps: [],
   popups: [],
 
